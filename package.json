@@ -1,0 +1,24 @@
+{
+  "name": "kidchis",
+  "version": "1.0.0",
+  "description": "KIDCHI - Plataforma Nutricional para gestión de menús escolares y seguimiento del estado nutricional de estudiantes",
+  "main": "index.html",
+  "scripts": {
+    "dev": "wrangler pages dev",
+    "deploy": "wrangler pages deploy",
+    "build": "echo 'No build required for static site'",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "nutrición",
+    "educación",
+    "salud",
+    "estudiantes",
+    "menús"
+  ],
+  "author": "Katy Castellanos",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
