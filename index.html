@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KIDCHI - Plataforma Nutricional para gestión de menús escolares y seguimiento del estado nutricional de estudiantes." />
+  <meta name="theme-color" content="#073b25" />
+  <title>KIDCHI | Plataforma Nutricional</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-logo" aria-label="Logo KIDCHI"></div><div class="brand-text"><h1>KIDCHI</h1><span>SALUD PARA KIDS</span></div></div>
+      <div class="nav-title">Plataforma</div>
+      <button class="nav-btn active" data-view="dashboard"><span>🏠</span>Dashboard</button>
+      <button class="nav-btn" data-view="students"><span>👥</span>Estudiantes</button>
+      <button class="nav-btn" data-view="menus"><span>📖</span>Menús</button>
+      <button class="nav-btn" data-view="reports"><span>📊</span>Reportes</button>
+      <button class="nav-btn" data-view="alerts"><span>🔔</span>Alertas</button>
+      <button class="nav-btn" data-view="recommendations"><span>💡</span>Recomendaciones</button>
+      <button class="nav-btn" data-view="institutions"><span>🏫</span>Instituciones</button>
+      <button class="nav-btn" data-view="mobile"><span>📱</span>App móvil</button>
+      <button class="nav-btn" data-view="print"><span>🖨️</span>Imprimibles</button>
+      <button class="nav-btn" data-view="settings"><span>⚙️</span>Configuración</button>
+      <div class="side-card"><strong>Producto final</strong><p>Vista funcional de la plataforma que usarían las instituciones que adquieren KIDCHI.</p></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="hamb" id="hamb">☰</button>
+        <div class="search"><span>🔎</span><input id="search" placeholder="Buscar estudiante, menú, institución o alerta..."></div>
+        <div class="top-actions"><button class="btn primary" id="demo">📅 <span>Solicitar demostración</span></button><div class="user"><div class="avatar">C</div><span>Hola, Coordinador</span></div></div>
+      </header>
+
+      <section class="view active" id="dashboard">
+        <div class="header-row"><div><h2>Resumen general</h2><p>Panel principal para monitorear estudiantes, instituciones, menús, alertas y cumplimiento nutricional.</p></div><button class="btn primary no-print" data-go="menus">Ver menú semanal</button></div>
+        <div class="dashboard">
+          <div>
+            <div class="metric-grid">
+              <div class="metric"><small><span class="icon">👥</span>Estudiantes activos</small><b>2,458</b></div>
+              <div class="metric"><small><span class="icon">🏫</span>Instituciones</small><b>24</b></div>
+              <div class="metric"><small><span class="icon">📋</span>Menús planificados</small><b>156</b></div>
+              <div class="metric"><small><span class="icon">🛡️</span>Cumplimiento nutricional</small><b>85%</b></div>
+            </div>
+            <div class="dash-grid">
+              <div class="card"><div class="panel-title"><h3>Distribución nutricional</h3><span class="tag">Semana actual</span></div><div class="donut-wrap"><div class="donut"></div><div class="legend"><div><span><i class="dot" style="background:#48b19b"></i>Carbohidratos</span><b>55%</b></div><div><span><i class="dot" style="background:#f48b23"></i>Proteínas</span><b>20%</b></div><div><span><i class="dot" style="background:#f5b833"></i>Grasas saludables</span><b>15%</b></div><div><span><i class="dot" style="background:#6a4c93"></i>Otros</span><b>10%</b></div></div></div></div>
+              <div class="card"><div class="panel-title"><h3>Consumo semanal de grupos de alimentos</h3><span class="tag">+8%</span></div><div class="bar-chart"><div class="bar" data-day="Lun" style="height:45%"></div><div class="bar" data-day="Mar" style="height:70%"></div><div class="bar" data-day="Mié" style="height:80%"></div><div class="bar" data-day="Jue" style="height:56%"></div><div class="bar" data-day="Vie" style="height:88%"></div><div class="bar" data-day="Sáb" style="height:82%"></div></div></div>
+            </div>
+            <div class="card" style="margin-top:18px"><div class="panel-title"><h3>Alertas recientes</h3><button class="btn secondary" data-go="alerts">Ver todas</button></div><div class="alerts-list" id="dashAlerts"></div></div>
+          </div>
+          <div class="card"><div class="panel-title"><h3>Menú semanal</h3><button class="btn secondary" data-go="menus">Abrir</button></div><div class="mini-menu"><div class="days" id="dashboardTabs"></div><div id="dashboardMenu"></div></div></div>
+        </div>
+      </section>
+
+      <section class="view" id="menus">
+        <div class="header-row"><div><h2>Menús semanales</h2><p>Vista real de la plataforma: selección por día, platos, calorías, proteínas, fibra y balance nutricional.</p></div><button class="btn primary no-print" id="newMenu">+ Crear menú</button></div>
+        <div class="grid g2"><div class="card"><div class="panel-title"><h3>Menú semanal institucional</h3><span class="tag">Escuela Demo</span></div><div class="days" id="menuTabs"></div><div id="menuDetail" style="margin-top:10px"></div></div><div class="grid g2" id="menuCards"></div></div>
+      </section>
+
+      <section class="view" id="students">
+        <div class="header-row"><div><h2>Perfil de estudiantes</h2><p>Seguimiento individual de cada estudiante, institución, alergias, índice nutricional y recomendaciones.</p></div><button class="btn primary no-print" id="newStudent">+ Agregar estudiante</button></div>
+        <div class="grid g3" id="studentsGrid"></div>
+      </section>
+
+      <section class="view" id="reports">
+        <div class="header-row"><div><h2>Reportes detallados</h2><p>Gráficas, indicadores y datos consolidados para decisiones institucionales.</p></div><button class="btn primary no-print" onclick="toast('Reporte generado para descarga')">Descargar reporte</button></div>
+        <div class="grid g4"><div class="metric"><small>Promedio semanal</small><b>85%</b></div><div class="metric"><small>Fruta aceptada</small><b>72%</b></div><div class="metric"><small>Hidratación</small><b>68%</b></div><div class="metric"><small>Alertas resueltas</small><b>91%</b></div></div>
+        <div class="grid g2" style="margin-top:20px"><div class="card"><div class="panel-title"><h3>Distribución nutricional</h3><span class="tag">Macro nutrientes</span></div><canvas id="pieChart" width="500" height="290"></canvas></div><div class="card"><div class="panel-title"><h3>Evolución semanal</h3><span class="tag">Cumplimiento</span></div><canvas id="lineChart" width="500" height="290"></canvas></div></div>
+      </section>
+
+      <section class="view" id="alerts"><div class="header-row"><div><h2>Alertas</h2><p>Notificaciones generadas por cambios en consumo, aceptación de alimentos o riesgos nutricionales.</p></div></div><div class="grid g2" id="alertsGrid"></div></section>
+      <section class="view" id="recommendations"><div class="header-row"><div><h2>Recomendaciones</h2><p>Sugerencias accionables para mejorar hábitos alimenticios y calidad del menú institucional.</p></div><button class="btn primary no-print" onclick="toast('Recomendaciones actualizadas')">Generar recomendaciones</button></div><div class="grid g2" id="recsGrid"></div></section>
+      <section class="view" id="institutions"><div class="header-row"><div><h2>Instituciones</h2><p>Administración de escuelas, ONGs y programas gubernamentales dentro de la plataforma.</p></div><button class="btn primary no-print" onclick="toast('Institución agregada')">+ Agregar institución</button></div><div class="grid g3" id="instGrid"></div></section>
+
+      <section class="view" id="mobile">
+        <div class="header-row"><div><h2>App móvil</h2><p>Experiencia que vería el usuario desde celular: menú, perfil nutricional, alertas y recomendaciones.</p></div></div>
+        <div class="grid g2"><div class="phone-app"><div class="phone-inner"><div class="mobile-header"><strong>KIDCHI</strong><span>🔔</span></div><div id="mobileContent"></div><div class="bottom-nav"><button class="active" data-mobile="menu">Menú</button><button data-mobile="profile">Perfil</button><button data-mobile="alerts">Alertas</button><button data-mobile="tips">Tips</button></div></div></div><div class="card"><h3>Uso para video</h3><p style="color:var(--muted);margin-top:8px">Esta sección puede grabarse como recorrido de app móvil. Todos los botones inferiores cambian la vista y muestran el producto final funcionando.</p><button class="btn primary" style="margin-top:16px" onclick="toast('Recorrido móvil listo para grabar')">Iniciar recorrido</button></div></div>
+      </section>
+
+      <section class="view" id="print"><div class="header-row"><div><h2>Menús imprimibles</h2><p>Versión lista para entregar, imprimir o guardar como PDF.</p></div><button class="btn primary no-print" onclick="window.print()">🖨️ Imprimir / PDF</button></div><div class="table-wrap"><table><thead><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Snack</th><th>Balance</th></tr></thead><tbody id="printBody"></tbody></table></div></section>
+
+      <section class="view" id="settings"><div class="header-row"><div><h2>Configuración</h2><p>Personalización de institución, alertas, objetivos y preferencias.</p></div></div><div class="grid g2"><div class="card form"><h3>Datos institucionales</h3><label>Nombre de institución</label><input value="Escuela Demo KIDCHI"><label>Tipo</label><select><option>Escuela</option><option>ONG</option><option>Institución gubernamental</option></select><label>Departamento</label><input value="Escuintla"></div><div class="card form"><h3>Preferencias</h3><label><input type="checkbox" checked style="width:auto"> Alertas por bajo consumo de frutas</label><label><input type="checkbox" checked style="width:auto"> Reportes semanales</label><label><input type="checkbox" checked style="width:auto"> Recomendaciones automáticas</label><button class="btn primary" onclick="toast('Configuración guardada')">Guardar configuración</button></div></div></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal"><div class="modal"><div class="modal-head"><h3 id="modalTitle">Formulario</h3><button class="close" id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
