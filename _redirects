@@ -1,0 +1,3 @@
+# Redirecciones para Cloudflare Pages
+# Redirigir rutas sin extensión a index.html para SPA
+/*                          /index.html               200
