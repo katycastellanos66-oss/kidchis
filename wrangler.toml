@@ -1,0 +1,20 @@
+name = "kidchis"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "kidchis-production"
+route = "https://kidchis.com/*"
+zone_id = ""
+
+[env.staging]
+name = "kidchis-staging"
+route = "https://staging.kidchis.com/*"
+
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["src/**/*.js"]
+
+[build.upload]
+format = "modules"
